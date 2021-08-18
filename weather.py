@@ -2,7 +2,8 @@ import json,datetime,os, requests
 #Ping service
 from discord import Webhook,RequestsWebhookAdapter
 
-datafile  = "weather.data"
+workdir = os.path.dirname(__file__)
+datafile  = os.path.join(workdir,"weather.data")
 dateformat_string ="%Y-%m-%dT%H:%M:%SZ"
 now = datetime.datetime.today()
 expected_amount_of_rain = 0
