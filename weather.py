@@ -23,8 +23,8 @@ def getWeatherData():
 
 def load_weather_data():
 
-    # with open(datafile, "w") as data_file:
-    #    data_file.write(json.dumps(getWeatherData(), indent=4))
+    with open(datafile, "w") as data_file:
+        data_file.write(json.dumps(getWeatherData(), indent=4))
 
     with open(datafile) as data_file:
         return json.load(data_file)
