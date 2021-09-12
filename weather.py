@@ -43,17 +43,14 @@ def notify_on_rain(expected_amount_of_rain):
 # Searches the data set looking for rain.
 for data_series in weather_JSON_Data["properties"]["timeseries"]:
     if "next_1_hours" in data_series["data"]:
-        print(data_series)
         weather_time = datetime.datetime.strptime(
             data_series["time"], dateformat_string
         )
         delta = weather_time - now
-        print(weather_time)
         # Finds the weather data in a time period given below
         tracked_hours = 14
         if delta.seconds / 3600 < tracked_hours and delta.days >= 0 and delta.days < 1:
             # Tracks through json to find the amount expecxted of rain.
-            print(data_series["time"])
             rain_amount = data_series["data"]["next_1_hours"]["details"][
                 "precipitation_amount"
             ]
@@ -61,3 +58,4 @@ for data_series in weather_JSON_Data["properties"]["timeseries"]:
 
 if expected_amount_of_rain > 1:
     notify_on_rain(expected_amount_of_rain)
+    print(expected_amount_of_rain)
